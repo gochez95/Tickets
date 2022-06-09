@@ -1,5 +1,9 @@
 package com.telus.tickets.dao;
 
-public interface IPriorityDao {
+import org.springframework.data.repository.CrudRepository;
+
+import com.telus.tickets.entity.Priority;
+
+public interface IPriorityDao extends CrudRepository<Priority, Integer> {
 
 }

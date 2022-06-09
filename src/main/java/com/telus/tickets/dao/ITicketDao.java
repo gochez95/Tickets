@@ -1,5 +1,9 @@
 package com.telus.tickets.dao;
 
-public interface ITicketDao {
+import org.springframework.data.repository.CrudRepository;
+
+import com.telus.tickets.entity.Ticket;
+
+public interface ITicketDao extends CrudRepository<Ticket, Integer> {
 
 }
