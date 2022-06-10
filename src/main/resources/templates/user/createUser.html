@@ -1,0 +1,95 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<div class="alert alert-danger" th:if="${error!=null}" th:text="${error}"></div>
+</head>
+
+<body>
+	<br>
+	<form th:action="@{/createUser}" th:object="${user}" method="post">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9 col-md-9 mx-auto">
+					<div class="card ">
+						<div class="card-header text-center">Create User</div>
+						<div class="card-body">
+							<div class="form-group row">
+								<label for="nombre" class="col-sm-2 col-form-label">Name</label>
+								<div class="col-sm-10">
+									<input type="hidden" th:field="*{idUser}">
+									<input type="text" class="form-control" id="nameUser" placeholder="Name"
+										th:field="*{nameUser}" th:errorClass="'form-control alert-danger'">
+									<small class="form-text text-danger" th:if="${#fields.hasErrors('nameUser')}"
+										th:errors="*{nameUser}">errores</small>
+								</div>
+							</div>
+							<div class="form-group row my-4">
+								<label for="nombre" class="col-sm-2 col-form-label">Last Name</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="lastnameUser" placeholder="Last Name"
+										th:field="*{lastnameUser}" th:errorClass="'form-control alert-danger'">
+									<small class="form-text text-danger" th:if="${#fields.hasErrors('lastnameUser')}"
+										th:errors="*{lastnameUser}">errores</small>
+								</div>
+							</div>
+							<div class="form-group row my-4">
+								<label for="nombre" class="col-sm-2 col-form-label">User name</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="userName" placeholder="User Name"
+										th:field="*{userName}" th:errorClass="'form-control alert-danger'">
+									<small class="form-text text-danger" th:if="${#fields.hasErrors('userName')}"
+										th:errors="*{userName}">errores</small>
+									<small class="form-text text-danger" th:if="${existUser}">User name already exist, try again</small>
+								</div>
+							</div>
+							<div class="form-group row my-4">
+								<label for="nombre" class="col-sm-2 col-form-label">Email</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="emailUser" placeholder="Email"
+										th:field="*{emailUser}" th:errorClass="'form-control alert-danger'">
+									<small class="form-text text-danger" th:if="${#fields.hasErrors('emailUser')}"
+										th:errors="*{emailUser}">errores</small>
+								</div>
+							</div>
+							<div class="form-group row my-4">
+								<label for="nombre" class="col-sm-2 col-form-label">Password</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="nombre" placeholder="Password"
+										th:field="*{password}" th:errorClass="'form-control alert-danger'">
+								</div>
+							</div>
+							<div class="form-group row my-4">
+								<label for="nombre" class="col-sm-2 col-form-label">Confirm Password</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="nombre"
+										placeholder="Confirm Password" th:field="*{confirmePassword}"
+										th:errorClass="'form-control alert-danger'">
+									<small class="form-text text-danger" th:if="${confirmPassword==false}">Password not
+										Match</small>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-2"><button type="submit" class="btn btn-success">Save</button></div>
+								<div class="col-2"><a class="btn btn-danger" th:href="@{/}">Cancel</a></div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+	integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+	crossorigin="anonymous"></script>
+
+</html>
