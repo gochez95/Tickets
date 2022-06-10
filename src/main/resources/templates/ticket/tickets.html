@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout ::head"></head>
+
+<body>
+	<header th:replace="layout/layout ::header"></header>
+	<div class="container">
+		<div class="row my-3">
+			<div class="col-md-3">
+				<div class="card border-info mb-3 text-center ">
+					<div class="card-header">Create Ticket</div>
+					<div class="card-body">
+						<p class="card-text">Go to page to create ticket</p>
+						<a th:href="@{/tickets/create}" class="btn btn-primary">Go </a>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-3">
+				<div class="card border-info mb-3 text-center ">
+					<div class="card-header">Ticket tracking</div>
+					<div class="card-body">
+						<p class="card-text">Go to page to tracking ticket</p>
+						<a th:href="@{/tickets/track}" class="btn btn-primary">Go </a>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-3">
+				<div class="card border-info mb-3 text-center " th:if="${rol=='seller'|| rol=='admin'}">
+					<div class="card-header">My ticket</div>
+					<div class="card-body">
+						<p class="card-text">Page to see assign tickets</p>
+						<a th:href="@{/tickets/myTickets}" class="btn btn-primary">Go </a>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-3">
+				<div class="card border-info mb-3 text-center " th:if="${rol=='admin'}">
+					<div class="card-header">Manage ticket</div>
+					<div class="card-body">
+						<p class="card-text">Go to page to Manage ticket</p>
+						<a th:href="@{/tickets/manageTicket}" class="btn btn-primary">Go </a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+	integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+	crossorigin="anonymous"></script>
+
+</html>

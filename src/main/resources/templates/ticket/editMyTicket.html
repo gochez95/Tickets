@@ -1,0 +1,107 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout ::head"></head>
+
+<body>
+	<header th:replace="layout/layout ::header"></header>
+	<div class="container">
+		<form th:action="@{/tickets/edit}" th:object="${ticket}" method="post">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9 col-md-9 mx-auto">
+						<div class="card ">
+							<div class="card-header text-center">Create Ticket</div>
+							<div class="card-body">
+								<div class="form-group row">
+									<input type="hidden" th:field="*{idTicket}">
+
+									<label for="nombre" class="col-sm-2 col-form-label">Name</label>
+									<div class="col-sm-10">
+										<input disabled type="text" class="form-control" id="nameTicket"
+											placeholder="Name Ticket" th:field="*{nameTicket}">
+
+									</div>
+								</div>
+								<div class="form-group row my-4">
+									<label for="nombre" class="col-sm-2 col-form-label">Description</label>
+									<div class="col-sm-10">
+										<input disabled type="text" class="form-control" id="descriptionTicket"
+											placeholder="Description" th:field="*{descriptionTicket}">
+
+									</div>
+								</div>
+								<div class="form-group row my-4">
+									<label for="nombre" class="col-sm-2 col-form-label">Create</label>
+									<div class="col-sm-10">
+										<input disabled class="form-control" id="createAt" placeholder="User Name"
+											th:field="*{createAt}" type="date">
+
+									</div>
+								</div>
+								<div class="form-group row my-4">
+									<label for="nombre" class="col-sm-2 col-form-label">Category</label>
+									<div class="col-sm-10">
+										<select disabled class="form-select form-control" th:field="*{idCategory}"
+											aria-label="Default select example">
+											<option th:each="list : ${category}" th:text="${list.categoryName}"
+												th:value="${list.idCategory}"></option>
+										</select>
+
+									</div>
+								</div>
+								<div class="form-group row my-4">
+									<label for="nombre" class="col-sm-2 col-form-label">Priority</label>
+									<div class="col-sm-10">
+										<select disabled class="form-select form-control" th:field="*{idPriority}"
+											aria-label="Default select example">
+											<option th:each="list : ${priority}" th:text="${list.namePriority}"
+												th:value="${list.idPriority}"></option>
+										</select>
+
+									</div>
+								</div>
+								<div class="form-group row my-4">
+									<label for="nombre" class="col-sm-2 col-form-label">Seller</label>
+									<div class="col-sm-10">
+										<select disabled class="form-select form-control" th:field="*{assign}"
+											aria-label="Default select example">
+											<option th:each="list : ${users}" th:text="${list.nameUser}"
+												th:value="${list.idUser}"></option>
+										</select>
+
+									</div>
+								</div>
+								<div class="form-group row my-4">
+									<label for="nombre" class="col-sm-2 col-form-label">Comment</label>
+									<div class="col-sm-10">
+										<textarea class="form-control"></textarea>
+
+									</div>
+								</div>
+								<div class="form-group row my-4">
+									<label for="nombre" class="col-sm-2 col-form-label">Status</label>
+									<div class="col-sm-10">
+										<select  class="form-select form-control" th:field="*{statusList}"
+											aria-label="Default select example">
+											<option th:each="list : ${status}" th:text="${list.statusName}"
+												th:value="${list.idStatus}"></option>
+										</select>
+
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<div class="col-2"><button type="submit" class="btn btn-success">Save</button></div>
+									<div class="col-2"><a class="btn btn-danger" th:href="@{/}">Cancel</a></div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
