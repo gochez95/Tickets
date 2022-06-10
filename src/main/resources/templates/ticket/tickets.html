@@ -22,7 +22,17 @@
 					<div class="card-header">Ticket tracking</div>
 					<div class="card-body">
 						<p class="card-text">Go to page to tracking ticket</p>
-						<a href="#" class="btn btn-primary">Go </a>
+						<a th:href="@{/tickets/track}" class="btn btn-primary">Go </a>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-3">
+				<div class="card border-info mb-3 text-center " th:if="${rol=='seller'|| rol=='admin'}">
+					<div class="card-header">My ticket</div>
+					<div class="card-body">
+						<p class="card-text">Page to see assign tickets</p>
+						<a th:href="@{/tickets/myTickets}" class="btn btn-primary">Go </a>
 					</div>
 				</div>
 
@@ -32,7 +42,7 @@
 					<div class="card-header">Manage ticket</div>
 					<div class="card-body">
 						<p class="card-text">Go to page to Manage ticket</p>
-						<a href="#" class="btn btn-primary">Go </a>
+						<a th:href="@{/tickets/manageTicket}" class="btn btn-primary">Go </a>
 					</div>
 				</div>
 

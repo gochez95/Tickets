@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout ::head"></head>
+
+<body>
+	<header th:replace="layout/layout ::header"></header>
+	<div class="container">
+
+		<div class="col-md">
+			<div>
+				<div class="card my-3">
+					<div class="card-body">
+						<h5 class="card-title text-center">Track Tickets</h5>
+						<table class="table table-striped ">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Create</th>
+									<th>Category</th>
+									<th>Priority</th>
+									<th>View</th>
+
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="ticket : ${track}">
+									<td th:text="${ticket.nameTicket}"></td>
+									<td th:text="${ticket.descriptionTicket}"></td>
+									<td th:text="${ticket.createAt}"></td>
+									<td  th:text="${ticket.idCategory.categoryName}"></td>
+									<td th:text="${ticket.idPriority.namePriority}"></td>
+									<td><a class="btn-primary btn-sm"
+											th:href="@{'/tickets/myTickets/'+${ticket.idTicket}}">View</a></td>
+
+								</tr>
+							</tbody>
+						</table>
+						<!--<nav th:replace="paginator-nav :: paginator"></nav>!-->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

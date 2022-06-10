@@ -13,9 +13,10 @@
 						<div class="card-header text-center">Create Ticket</div>
 						<div class="card-body">
 							<div class="form-group row">
+								<input type="hidden" th:field="*{idTicket}">
+
 								<label for="nombre" class="col-sm-2 col-form-label">Name</label>
 								<div class="col-sm-10">
-									<input type="hidden" th:field="*{idTicket}">
 									<input type="text" class="form-control" id="nameTicket" placeholder="Name Ticket"
 										th:field="*{nameTicket}">
 

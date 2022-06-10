@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout ::head"></head>
+
+<body>
+	<header th:replace="layout/layout ::header"></header>
+	<div class="container">
+
+		<div class="col-md">
+			<div >
+				<div class="card my-3">
+					<div class="card-body">
+						<h5 class="card-title text-center">Manage Tickets</h5>
+						<table class="table table-striped ">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Create</th>
+									<th>Assing</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="ticket : ${tickets}">
+								<td th:text="${ticket.nameTicket}"></td>
+								<td th:text="${ticket.descriptionTicket}"></td>
+								<td th:text="${ticket.createAt}"></td>
+								<td><a class="btn-primary btn-sm"
+										th:href="@{'/tickets/manageTicket/'+${ticket.idTicket}}">Assing</a></td>
+
+							</tr>
+						</tbody>
+						</table>
+						<!--<nav th:replace="paginator-nav :: paginator"></nav>!-->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
