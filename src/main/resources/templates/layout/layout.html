@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="head">
+	<meta charset="UTF-8" />
+	<title>Ticket System</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+</head>
+
+<body>
+
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<a class="navbar-brand" th:href="@{/}">TicketTelus</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" th:href="@{/tickets}">Home</a></li>
+					
+				</ul>
+				<ul class="navbar-nav navbar-right">
+					<li sec:authorize="!isAuthenticated()"><a class="btn btn-outline-primary" th:href="@{/login}">Sign
+							In</a></li>
+
+					<li sec:authorize="isAuthenticated()" class="dropdown show">
+
+						<form id="logoutForm" th:action="@{/logout}" method="post">
+							<button class="btn btn-success btn-sm"
+								onclick="document.getElementById('logoutForm').submit();" type="submit">Sign
+								Out</button>
+							<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+						</form>
+
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+		<div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
+		<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+		<div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+	</header>
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+	integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+	crossorigin="anonymous"></script>
+
+</html>
