@@ -14,7 +14,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Email;
 import javax.xml.bind.annotation.XmlTransient;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "user")
@@ -28,18 +32,25 @@ public class User implements Serializable {
     private Integer idUser;
     @Basic(optional = false)
     @Column(name = "name_user", nullable = false, length = 150)
+    @NotEmpty
     private String nameUser;
     @Basic(optional = false)
     @Column(name = "lastname_user", nullable = false, length = 150)
+    @NotEmpty
     private String lastnameUser;
     @Basic(optional = false)
     @Column(name = "user_name", nullable = false, length = 50)
+    @NotEmpty
     private String userName;
     @Basic(optional = false)
     @Column(name = "password", nullable = false, length = 150)
     private String password;
+    @Transient
+    private String confirmePassword;
     @Basic(optional = false)
     @Column(name = "email_user", nullable = false, length = 150)
+    @Email
+    @javax.validation.constraints.NotEmpty
     private String emailUser;
     @Column(name = "active")
     private Boolean active;
@@ -106,8 +117,18 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    
 
-    public String getEmailUser() {
+    public String getConfirmePassword() {
+		return confirmePassword;
+	}
+
+	public void setConfirmePassword(String confirmePassword) {
+		this.confirmePassword = confirmePassword;
+	}
+
+	public String getEmailUser() {
         return emailUser;
     }
 
@@ -122,6 +143,8 @@ public class User implements Serializable {
     public void setActive(Boolean active) {
         this.active = active;
     }
+    
+    
 
     @XmlTransient
     public List<Ticket> getTicketList() {
@@ -148,6 +171,8 @@ public class User implements Serializable {
     public void setIdRole(Rol idRole) {
         this.idRole = idRole;
     }
+    
+    
 
     @Override
     public int hashCode() {

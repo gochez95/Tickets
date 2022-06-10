@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -18,6 +20,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "ticket")
 public class Ticket implements Serializable {
@@ -26,6 +30,7 @@ public class Ticket implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "id_ticket", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTicket;
     @Basic(optional = false)
     @Column(name = "name_ticket", nullable = false, length = 150)
@@ -34,6 +39,7 @@ public class Ticket implements Serializable {
     @Column(name = "description_ticket", nullable = false, length = 350)
     private String descriptionTicket;
     @Column(name = "create_at")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date createAt;
     @Column(name = "finish_at")
