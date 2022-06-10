@@ -18,4 +18,6 @@ public interface IUserService {
 	
 	public void delete(Integer id);
 	
+	public User findUserbyUserName(String userName);
+	
 }
