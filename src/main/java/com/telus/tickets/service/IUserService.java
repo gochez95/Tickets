@@ -20,4 +20,6 @@ public interface IUserService {
 	
 	public User findUserbyUserName(String userName);
 	
+	public List<User> findUserByRol(Integer idRol);
+	
 }

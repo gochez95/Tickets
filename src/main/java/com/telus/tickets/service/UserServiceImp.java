@@ -38,6 +38,11 @@ public class UserServiceImp implements IUserService{
 	public User findUserbyUserName(String userName) {
 		return userDao.findUserByUserName(userName);
 	}
+
+	@Override
+	public List<User> findUserByRol(Integer idRol) {
+		return userDao.findUserByRol(idRol);
+	}
 	
 	
 	

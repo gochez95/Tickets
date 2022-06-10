@@ -34,4 +34,16 @@ public class TicketServiceImp implements ITicketService {
 		ticketDao.deleteById(id);
 	}
 
+	@Override
+	public List<Ticket> findTicketsByIdAssign(Integer idAssign) {
+		return ticketDao.findTicketsByAssign(idAssign);
+	}
+
+	@Override
+	public List<Ticket> findTicketsByIdUser(Integer idUser) {
+		return ticketDao.findTicketsByUser(idUser);
+	}
+	
+	
+
 }

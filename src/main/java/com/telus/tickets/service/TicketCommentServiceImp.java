@@ -5,27 +5,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.telus.tickets.dao.ITicketCommentDao;
 import com.telus.tickets.dao.ITicketDao;
 import com.telus.tickets.entity.Ticket;
+import com.telus.tickets.entity.TicketComment;
 
 @Service
-public class TicketCommentServiceImp implements ITicketService{
+public class TicketCommentServiceImp implements ITicketComment{
 
 	@Autowired
-	private ITicketDao ticketDao;
-	
+	private ITicketCommentDao ticketDao;
+
 	@Override
-	public List<Ticket> findAll() {
-		return (List<Ticket>)ticketDao.findAll();
+	public List<TicketComment> findAll() {
+		return (List<TicketComment>)ticketDao.findAll();
 	}
 
 	@Override
-	public void save(Ticket ticket) {
-		ticketDao.save(ticket);
+	public void save(TicketComment ticketComment) {
+		ticketDao.save(ticketComment);
 	}
 
 	@Override
-	public Ticket findOne(Integer id) {
+	public TicketComment findOne(Integer id) {
 		return ticketDao.findById(id).get();
 	}
 
@@ -33,5 +35,8 @@ public class TicketCommentServiceImp implements ITicketService{
 	public void delete(Integer id) {
 		ticketDao.deleteById(id);
 	}
+	
+	
+
 
 }

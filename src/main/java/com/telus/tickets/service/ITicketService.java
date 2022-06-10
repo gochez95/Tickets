@@ -18,4 +18,8 @@ public interface ITicketService {
 	
 	public void delete(Integer id);
 	
+	public List<Ticket> findTicketsByIdAssign(Integer idAssign);
+	
+	public List<Ticket> findTicketsByIdUser(Integer idUser);
+
 }
