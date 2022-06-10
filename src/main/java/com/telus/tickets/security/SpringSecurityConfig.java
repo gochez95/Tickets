@@ -25,11 +25,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		//Aqui van todas las rutas de accesso public
 		http.authorizeRequests().antMatchers("/css/**", "/createUser","/images/**","/js/**").permitAll()
-		.antMatchers("/").hasAnyAuthority("admin","seller","user")
+		.antMatchers("/").hasAnyAuthority("admin","seller","user","supervisor")
 		//.antMatchers("/index").hasAuthority("ADMIN")
-		.antMatchers("/politicas/","/manuales/","/instructivos/","/solicitudes/").hasAnyAuthority("ADMIN","Jefaturas","Negocios","Administrativos","Cajas")
-		.antMatchers("/politicas/gerencia/**","/manuales/gerencia/**","/instructivos/gerencia/**","/solicitudes/**").hasAnyAuthority("ADMIN","Jefaturas")
-		.antMatchers("/usuarios/**","/documentos/**").hasAuthority("ADMIN")
+		.antMatchers("/tickets/manageTicket").hasAnyAuthority("admin")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin().loginPage("/login")
