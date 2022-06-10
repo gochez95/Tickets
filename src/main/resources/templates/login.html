@@ -5,6 +5,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 	<div class="alert alert-danger" th:if="${error!=null}" th:text="${error}"></div>
+	<div class="alert alert-success" th:if="${success}" >successfully created</div>
+
 </head>
 
 <body>
@@ -28,12 +30,12 @@
 								<label for="password">Password</label>
 							</div>
 							<div class="d-grid">
-								<button class="btn btn-primary btn-login text-uppercase fw-bold"
-									type="submit">Sign in</button>
+								<button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
+									in</button>
 
 							</div>
 							<center>
-								<a  th:href="@{/createUser}">Create user</a>
+								<a th:href="@{/createUser}">Create user</a>
 							</center>
 						</form>
 					</div>
