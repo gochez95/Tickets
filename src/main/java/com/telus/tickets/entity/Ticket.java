@@ -30,7 +30,6 @@ public class Ticket implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "id_ticket", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTicket;
     @Basic(optional = false)
     @Column(name = "name_ticket", nullable = false, length = 150)
@@ -61,6 +60,9 @@ public class Ticket implements Serializable {
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     @ManyToOne
     private User idUser;
+    @JoinColumn(name = "assign", referencedColumnName = "id_user")
+    @ManyToOne
+    private User assign;
     @OneToMany(mappedBy = "idTicket")
     private List<TicketComment> ticketCommentList;
 
@@ -167,8 +169,18 @@ public class Ticket implements Serializable {
     public void setTicketCommentList(List<TicketComment> ticketCommentList) {
         this.ticketCommentList = ticketCommentList;
     }
+    
+    
 
-    @Override
+    public User getAssign() {
+		return assign;
+	}
+
+	public void setAssign(User assign) {
+		this.assign = assign;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (idTicket != null ? idTicket.hashCode() : 0);
